@@ -1,0 +1,123 @@
+<mat-tab-group mat-align-tabs="start">
+    <mat-tab label="Lector de QR">
+        <div class="container-fluid">
+            <mat-card class="mt-4 shadow">
+                <div class="row">
+                    <div class="col-3">
+                        <mat-card id="cardQrScanner" class="shadow">
+                            <div class="container-fluid">
+                                <div class="row align-items-center pt-5">
+                                    <div class="col-12">
+                                        <div class="videocam">
+                                            <qr-scanner class="videocam" [debug]="false" [canvasWidth]="1080" [canvasHeight]="720" [stopAfterScan]="false" [updateTime]="1000">
+                                            </qr-scanner>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row pb-5">
+                                    <div class="col-12">
+                                        <div class="row" id="cardData">
+                                            <div class="col-12">
+                                                <mat-card>
+                                                    <mat-card class="card-text-title mb-2" style="border-radius: 0">
+                                                        <p class="text-center">ULTIMO CODIGO LEIDO</p>
+                                                    </mat-card>
+                                                    <mat-card class="mb-2" style="border-radius: 0">
+                                                        <span>FECHA:</span>
+                                                        <p class="card-text">{{ultimoLeido.fecha}}</p>
+
+                                                        <span>CONTENIDO:</span>
+                                                        <p class="card-text">{{ultimoLeido.contenido}}</p>
+
+                                                        <span>ESTADO:</span>
+                                                        <p class="card-text">{{ultimoLeido.estado}}</p>
+                                                    </mat-card>
+                                                </mat-card>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </mat-card>
+                    </div>
+                    <div class="col-9">
+                        <div class="container-fluid">
+                            <div class="row pb-3 ml-5 mr-5" id="tituloCambiante">
+                                <div class="col-12">
+                                    <h2>
+                                        {{ placeholderAddButton }}
+                                    </h2>
+                                </div>
+                            </div>
+                            <div class="row m-2 ml-5 mr-5">
+                                <div class="col-4">
+                                    <mat-form-field style="width: 100%">
+                                        <input matInput type="text" placeholder="{{ placeholderAddButton }}" [(ngModel)]="newItemValue" style="width: 100%" />
+                                    </mat-form-field>
+                                </div>
+                                <div class="col-4">
+                                    <button mat-fab color="primary" aria-label="Example icon button with a delete icon" (click)="addItemToList(newItemValue)">
+                    <mat-icon>add</mat-icon>
+                  </button>
+                                </div>
+                            </div>
+                            <div class="row align-items-start pt-2 mb-4 m-2 ml-5 mr-5">
+                                <div class="col-12 align-self-center">
+                                    <table mat-table [dataSource]="listScanner" class="mat-elevation-z8" style="margin-bottom: 3rem">
+
+                                        <ng-container matColumnDef="Fecha">
+                                            <th mat-header-cell *matHeaderCellDef>Fecha</th>
+                                            <td mat-cell *matCellDef="let element">
+                                                {{ element.fecha }}
+                                            </td>
+                                        </ng-container>
+                                        <ng-container matColumnDef="Contenido">
+                                            <th mat-header-cell *matHeaderCellDef>Contenido</th>
+                                            <td mat-cell *matCellDef="let element">
+                                                {{ element.contenido }}
+                                            </td>
+                                        </ng-container>
+                                        <ng-container matColumnDef="Estado">
+                                            <th mat-header-cell *matHeaderCellDef>Estado</th>
+                                            <td mat-cell *matCellDef="let element">
+                                                {{ element.estado }}
+                                            </td>
+                                        </ng-container>
+                                        <ng-container matColumnDef="Copiar">
+                                            <th mat-header-cell *matHeaderCellDef>Copiar</th>
+                                            <td mat-cell *matCellDef="let element; let i = index">
+                                                <button mat-mini-fab color="warn" aria-label="Example icon button with a delete icon" (click)="deleteItem(i)">
+                                              <mat-icon>delete</mat-icon>
+                                            </button>
+                                            </td>
+                                        </ng-container>
+                                        <ng-container matColumnDef="Eliminar">
+                                            <th mat-header-cell *matHeaderCellDef>Eliminar</th>
+                                            <td mat-cell *matCellDef="let element; let i = index">
+                                                <button mat-mini-fab color="warn" aria-label="Example icon button with a delete icon" (click)="deleteItem(i)">
+                                                <mat-icon>delete</mat-icon>
+                                              </button>
+                                            </td>
+                                        </ng-container>
+
+                                        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                                        <tr mat-row *matRowDef="
+                        let row;
+                        columns: displayedColumns;
+                        let i = index
+                      "></tr>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </mat-card>
+        </div>
+    </mat-tab>
+    <mat-tab label="Generador de QR">
+        <div class="container">
+            <h1>Proximamente</h1>
+        </div>
+    </mat-tab>
+</mat-tab-group>

@@ -1,0 +1,53 @@
+.qrArea {
+    width: 280px;
+    height: 230px;
+    border: 20px dashed black;
+}
+
+.lineaScanner {
+    z-index: 5;
+    position: relative;
+    margin: 0;
+    padding: 0;
+    background-color: red;
+    position: relative;
+    top: 75px;
+}
+
+.stopCamera {
+    opacity: 0%;
+}
+
+table {
+    width: 100%;
+}
+
+#cardQrScanner {
+    background-color: #00806f;
+}
+
+#cardData span {
+    font-size: 12px;
+    font-weight: 700;
+    color: #03927f;
+}
+
+.card-text {
+    font-size: 14px;
+    font-weight: 400;
+    color: #464646;
+}
+
+.card-text-title {
+    font-size: 12px;
+    font-weight: 800;
+    background-color: #fe9800;
+}
+
+video {
+    background-color: rgb(212, 212, 212);
+}
+
+.mat-tab-group {
+    margin-bottom: 48px;
+}
